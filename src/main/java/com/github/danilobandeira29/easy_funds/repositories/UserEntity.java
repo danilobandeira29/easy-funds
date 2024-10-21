@@ -2,13 +2,14 @@ package com.github.danilobandeira29.easy_funds.repositories;
 
 import jakarta.persistence.*;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "users")
 public class UserEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    public UUID id;
 
     @Column(name = "full_name", nullable = false)
     public String fullName;

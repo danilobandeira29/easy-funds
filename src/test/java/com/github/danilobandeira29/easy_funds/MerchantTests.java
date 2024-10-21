@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 public class MerchantTests {
 
@@ -19,7 +20,7 @@ public class MerchantTests {
         var account = new Account(new BigDecimal(0));
         var email = new Email("email@email.com");
         var password = "1234";
-        var merchant = new Merchant(razaoSocial, cnpj, email, password, account);
+        var merchant = new Merchant(UUID.randomUUID(), razaoSocial, cnpj, email, password, account);
         assertEquals("00.***.***/****-**", merchant.cnpj.getWithMask());
     }
 }

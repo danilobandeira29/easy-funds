@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 public class UsersRepository {
@@ -17,9 +18,9 @@ public class UsersRepository {
     private IUsersRepository usersRepository;
 
     @Autowired
-    private IAccountRepository accountRepository;
+    private IAccountsRepository accountRepository;
 
-    public Optional<User> findUserWithAccountById(Long id) {
+    public Optional<User> findUserWithAccountById(UUID id) {
         try {
             var u = usersRepository.findById(id);
             var accountEntity = accountRepository.findByOwnerId(id);
@@ -32,8 +33,9 @@ public class UsersRepository {
             var password = userEntity.password;
             var cpf = new CPF(userEntity.cpf);
             var account = new Account(accountEntity.get().balance);
-            return Optional.of(new User(fullName, cpf, email, password, account));
+            return Optional.of(new User(userEntity.id, fullName, cpf, email, password, account));
         } catch (Exception e) {
+            System.out.println(e);
             return Optional.empty();
         }
     }

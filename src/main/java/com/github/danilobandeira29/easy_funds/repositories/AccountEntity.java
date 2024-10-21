@@ -17,5 +17,5 @@ public class AccountEntity {
     public BigDecimal balance;
 
     @Column(name = "owner_id", nullable = false)
-    public Long ownerId;
+    public UUID ownerId;
 }

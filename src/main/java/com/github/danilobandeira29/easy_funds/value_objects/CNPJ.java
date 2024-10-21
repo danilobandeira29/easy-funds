@@ -19,4 +19,8 @@ public class CNPJ {
     public String getWithMask() {
         return value.split("\\.")[0] + ".***.***/****-**";
     }
+
+    public String getValue() {
+        return value;
+    }
 }

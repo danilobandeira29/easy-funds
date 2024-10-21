@@ -2,20 +2,24 @@ package com.github.danilobandeira29.easy_funds.repositories;
 
 import jakarta.persistence.*;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "merchants")
 public class MerchantEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public UUID id;
 
-    @Column(name = "full_name", nullable = false)
-    private String fullName;
+    @Column(name = "razao_social", nullable = false)
+    public String razaoSocial;
+
+    @Column(name = "cnpj", nullable = false)
+    public String cnpj;
 
     @Column(name = "email", nullable = false)
-    private String email;
+    public String email;
 
     @Column(name = "password", nullable = false)
-    private String password;
+    public String password;
 }

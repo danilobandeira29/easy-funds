@@ -8,6 +8,7 @@ import com.github.danilobandeira29.easy_funds.value_objects.FullName;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -20,7 +21,7 @@ public class UserTests {
         var account = new Account(new BigDecimal(0));
         var email = new Email("email@email.com");
         var password = "1234";
-        var user = new User(fullName, cpf, email, password, account);
+        var user = new User(UUID.randomUUID(), fullName, cpf, email, password, account);
         assertEquals("001.***.***-**", user.cpf.getWithMask());
     }
 
@@ -31,7 +32,7 @@ public class UserTests {
         var account = new Account(new BigDecimal(0));
         var email = new Email("email@email.com");
         var password = "1234";
-        var user = new User(fullName, cpf, email, password, account);
+        var user = new User(UUID.randomUUID(), fullName, cpf, email, password, account);
         assertEquals("Bastos Bandeira", user.fullName.getLastName());
     }
 }
