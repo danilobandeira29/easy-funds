@@ -1,0 +1,16 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+title "Easy Funds"
+
+Person(user, "User", "Person who wants to create transfer money to another user or merchant")
+System(easy_funds, "Easy Funds System", "Transfer platform here user's transfer is easy and fast")
+System_Ext(message_broker, "RabbitMQ", "Message Broker")
+System_Ext(authorizer, "Authorizer System", "Authorize if a transfer is can be done")
+System_Ext(notifier, "Notification System", "Handle notification of type Email and SMS")
+AddRelTag("topic", $textColor="orange", $lineColor="orange", $lineStyle = DashedLine())
+Rel(user, easy_funds, "Transfer money")
+Rel(easy_funds, authorizer, "Authorize transaction")
+Rel(easy_funds, message_broker, "Send transaction", "topic", $tags="topic")
+Rel(notifier, message_broker, "Read transaction", "topic", $tags="topic")
+@enduml
