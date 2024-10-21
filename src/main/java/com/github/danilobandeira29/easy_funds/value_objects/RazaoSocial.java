@@ -8,7 +8,7 @@ public class RazaoSocial {
             throw new IllegalArgumentException("cannot be blank");
         }
         if(v.split(" ", 2).length < 2) {
-            throw new IllegalArgumentException("must be full name");
+            throw new IllegalArgumentException("must be razao social");
         }
         value = v;
     }
