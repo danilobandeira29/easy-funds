@@ -1,5 +1,8 @@
 package com.github.danilobandeira29.easy_funds.entities;
 
+import java.math.BigDecimal;
+import java.util.UUID;
+
 public class UserPayeeStrategy implements IPayeeStrategy {
     private final User user;
 
@@ -8,13 +11,18 @@ public class UserPayeeStrategy implements IPayeeStrategy {
     }
 
     @Override
+    public UUID getId() {
+        return user.getId();
+    }
+
+    @Override
     public String getDocument() {
-        return user.cpf.getValue();
+        return user.getCpf().getValue();
     }
 
     @Override
     public String getEmail() {
-        return user.email.getValue();
+        return user.getEmail().getValue();
     }
 
     @Override
@@ -24,6 +32,16 @@ public class UserPayeeStrategy implements IPayeeStrategy {
 
     @Override
     public String getName() {
-        return user.fullName.getValue();
+        return user.getFullName().getValue();
+    }
+
+    @Override
+    public void deposit(BigDecimal d) {
+        user.getAccount().deposit(d);
+    }
+
+    @Override
+    public Account getAccount() {
+        return user.getAccount();
     }
 }

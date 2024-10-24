@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Positive;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-public record TransferDto (
+public record TransferRequestDto(
         @NotNull(message = "value must be float")
         @Positive(message = "value must be greater than zero")
         BigDecimal value,

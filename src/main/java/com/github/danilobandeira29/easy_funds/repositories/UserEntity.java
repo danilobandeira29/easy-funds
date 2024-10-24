@@ -14,10 +14,10 @@ public class UserEntity {
     @Column(name = "full_name", nullable = false)
     public String fullName;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = false, unique = true)
     public String email;
 
-    @Column(name = "cpf", nullable = false)
+    @Column(name = "cpf", nullable = false, unique = true)
     public String cpf;
 
     @Column(name = "password", nullable = false)

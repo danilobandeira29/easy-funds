@@ -14,10 +14,10 @@ public class MerchantEntity {
     @Column(name = "razao_social", nullable = false)
     public String razaoSocial;
 
-    @Column(name = "cnpj", nullable = false)
+    @Column(name = "cnpj", nullable = false, unique = true)
     public String cnpj;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = false, unique = true)
     public String email;
 
     @Column(name = "password", nullable = false)

@@ -18,21 +18,23 @@ public class UserTests {
     public void testCpfMasked() {
         var fullName = new FullName("Danilo Bandeira");
         var cpf = new CPF("001.000.000-00");
-        var account = new Account(new BigDecimal(0));
+        var id = UUID.randomUUID();
+        var account = new Account(UUID.randomUUID(), new BigDecimal(0), id);
         var email = new Email("email@email.com");
         var password = "1234";
-        var user = new User(UUID.randomUUID(), fullName, cpf, email, password, account);
-        assertEquals("001.***.***-**", user.cpf.getWithMask());
+        var user = new User(id, fullName, cpf, email, password, account);
+        assertEquals("001.***.***-**", user.getCpf().getWithMask());
     }
 
     @Test
     public void testLastName() {
         var fullName = new FullName("Danilo Bastos Bandeira");
         var cpf = new CPF("001.000.000-00");
-        var account = new Account(new BigDecimal(0));
+        var id = UUID.randomUUID();
+        var account = new Account(UUID.randomUUID(), new BigDecimal(0), id);
         var email = new Email("email@email.com");
         var password = "1234";
-        var user = new User(UUID.randomUUID(), fullName, cpf, email, password, account);
-        assertEquals("Bastos Bandeira", user.fullName.getLastName());
+        var user = new User(id, fullName, cpf, email, password, account);
+        assertEquals("Bastos Bandeira", user.getFullName().getLastName());
     }
 }

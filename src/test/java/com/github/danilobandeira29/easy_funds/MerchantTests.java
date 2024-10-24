@@ -17,10 +17,11 @@ public class MerchantTests {
     public void testCNPJWithMask() {
         var razaoSocial = new RazaoSocial("Comercio do Paulo");
         var cnpj = new CNPJ("00.000.000/0001-00");
-        var account = new Account(new BigDecimal(0));
+        var id = UUID.randomUUID();
+        var account = new Account(UUID.randomUUID(), new BigDecimal(0), id);
         var email = new Email("email@email.com");
         var password = "1234";
-        var merchant = new Merchant(UUID.randomUUID(), razaoSocial, cnpj, email, password, account);
+        var merchant = new Merchant(id, razaoSocial, cnpj, email, password, account);
         assertEquals("00.***.***/****-**", merchant.cnpj.getWithMask());
     }
 }

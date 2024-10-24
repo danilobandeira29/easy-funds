@@ -38,8 +38,12 @@ public class DataLoader implements CommandLineRunner {
             userEntity.email = "email@email.com";
             userEntity.fullName = "Danilo Bandeira";
             userEntity.password = "1234";
-            System.out.println(userEntity);
             usersRepository.save(userEntity);
+            AccountEntity accountEntity = new AccountEntity();
+            accountEntity.setId(UUID.fromString("b158df02-6289-4129-a30f-66025a2eb676"));
+            accountEntity.setBalance(new BigDecimal("1000.00"));
+            accountEntity.setOwnerId(userEntity.id);
+            accountRepository.save(accountEntity);
             UserEntity userEntity2 = new UserEntity();
             userEntity2.id = UUID.fromString("63015f60-9506-4b5d-ba29-8d7e944d634e");
             userEntity2.cpf = "001.000.000-00";
@@ -47,13 +51,10 @@ public class DataLoader implements CommandLineRunner {
             userEntity2.fullName = "Ana Banana";
             userEntity2.password = "1234";
             usersRepository.save(userEntity2);
-            AccountEntity accountEntity = new AccountEntity();
-            accountEntity.balance = new BigDecimal("1000.00");
-            accountEntity.ownerId = userEntity.id;
-            accountRepository.save(accountEntity);
             AccountEntity accountEntity2 = new AccountEntity();
-            accountEntity2.balance = new BigDecimal("1000.00");
-            accountEntity2.ownerId = userEntity2.id;
+            accountEntity2.setId(UUID.fromString("92433aa2-9491-4b27-8c81-3924fef625ec"));
+            accountEntity2.setBalance(new BigDecimal("1000.00"));
+            accountEntity2.setOwnerId(userEntity2.id);
             accountRepository.save(accountEntity2);
             MerchantEntity merchantEntity = new MerchantEntity();
             merchantEntity.id = UUID.fromString("cfcb249c-62c5-41a2-9078-cb210f8c70a2");
@@ -63,8 +64,9 @@ public class DataLoader implements CommandLineRunner {
             merchantEntity.password = "1234";
             merchantRepository.save(merchantEntity);
             AccountEntity accountEntityMerchant = new AccountEntity();
-            accountEntityMerchant.balance = new BigDecimal("1000.00");
-            accountEntityMerchant.ownerId = merchantEntity.id;
+            accountEntityMerchant.setId(UUID.fromString("cf52067c-b5a6-4ff8-883d-9efdc721a40f"));
+            accountEntityMerchant.setBalance(new BigDecimal("1000.00"));
+            accountEntityMerchant.setOwnerId(merchantEntity.id);
             accountRepository.save(accountEntityMerchant);
         } catch (Exception e) {
             System.out.println("error when seeding " + e);

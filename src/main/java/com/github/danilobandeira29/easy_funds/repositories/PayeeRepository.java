@@ -38,7 +38,7 @@ public class PayeeRepository {
                 var cnpj = new CNPJ(merchantEntity.cnpj);
                 var email = new Email(merchantEntity.email);
                 var password = merchantEntity.password;
-                var account = new Account(accountEntityOptional.get().balance);
+                var account = new Account(accountEntityOptional.get().getId(), accountEntityOptional.get().getBalance(), merchantEntity.id);
                 var merchant = new Merchant(merchantEntity.id, razaoSocial, cnpj, email, password, account);
                 var merchantStrategy = new MerchantPayeeStrategy(merchant);
                 return Optional.of(merchantStrategy);
@@ -49,7 +49,7 @@ public class PayeeRepository {
                 var email = new Email(userEntity.email);
                 var password = userEntity.password;
                 var cpf = new CPF(userEntity.cpf);
-                var account = new Account(accountEntityOptional.get().balance);
+                var account = new Account(accountEntityOptional.get().getId(), accountEntityOptional.get().getBalance(), userEntity.id);
                 var user = new User(userEntity.id, fullName, cpf, email, password, account);
                 return Optional.of(new UserPayeeStrategy(user));
             }

@@ -32,7 +32,7 @@ public class UsersRepository {
             var email = new Email(userEntity.email);
             var password = userEntity.password;
             var cpf = new CPF(userEntity.cpf);
-            var account = new Account(accountEntity.get().balance);
+            var account = new Account(accountEntity.get().getId(), accountEntity.get().getBalance(), userEntity.id);
             return Optional.of(new User(userEntity.id, fullName, cpf, email, password, account));
         } catch (Exception e) {
             System.out.println(e);

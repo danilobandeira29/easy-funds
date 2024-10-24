@@ -1,12 +1,25 @@
 package com.github.danilobandeira29.easy_funds.entities;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 public class Account {
+    private UUID id;
+    private UUID ownerId;
     private BigDecimal balance;
 
-    public Account(BigDecimal b) {
+    public Account(UUID i, BigDecimal b, UUID o) {
+        id = i;
         balance = b;
+        ownerId = o;
+    }
+
+    public UUID getOwnerId() {
+        return ownerId;
+    }
+
+    public UUID getId() {
+        return id;
     }
 
     public BigDecimal getBalance() {
