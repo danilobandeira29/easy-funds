@@ -1,6 +1,6 @@
 package com.github.danilobandeira29.easy_funds.services;
 
-public enum TransferEnum {
+public enum TransferErrorCodesEnum {
     TRANSFER_SELF_TRANSFER,
     TRANSFER_PAYER_NOT_FOUND,
     TRANSFER_PAYEE_NOT_FOUND,

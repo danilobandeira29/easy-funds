@@ -1,6 +1,6 @@
 package com.github.danilobandeira29.easy_funds.controllers;
 
-import com.github.danilobandeira29.easy_funds.services.TransferEnum;
+import com.github.danilobandeira29.easy_funds.services.TransferErrorCodesEnum;
 import com.github.danilobandeira29.easy_funds.services.TransferService;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
@@ -23,14 +23,14 @@ public class TransferController {
     TransferService transferService;
 
     private final Map<String, HttpStatus> errorsMap = Map.of(
-            TransferEnum.TRANSFER_PAYEE_NOT_FOUND.toString(), HttpStatus.NOT_FOUND,
-            TransferEnum.TRANSFER_PAYER_NOT_FOUND.toString(), HttpStatus.NOT_FOUND,
-            TransferEnum.TRANSFER_SELF_TRANSFER.toString(), HttpStatus.BAD_REQUEST,
-            TransferEnum.TRANSFER_PAYER_INSUFFICIENT_BALANCE.toString(), HttpStatus.BAD_REQUEST,
-            TransferEnum.TRANSFER_UNAUTHORIZED.toString(), HttpStatus.BAD_REQUEST,
-            TransferEnum.TRANSFER_DEPOSIT_NEGATIVE_VALUE_FOR_PAYEE.toString(), HttpStatus.BAD_REQUEST,
-            TransferEnum.TRANSFER_AUTHORIZATION.toString(), HttpStatus.INTERNAL_SERVER_ERROR,
-            TransferEnum.TRANSFER_AUTHORIZATION_ERROR.toString(), HttpStatus.INTERNAL_SERVER_ERROR
+            TransferErrorCodesEnum.TRANSFER_PAYEE_NOT_FOUND.toString(), HttpStatus.NOT_FOUND,
+            TransferErrorCodesEnum.TRANSFER_PAYER_NOT_FOUND.toString(), HttpStatus.NOT_FOUND,
+            TransferErrorCodesEnum.TRANSFER_SELF_TRANSFER.toString(), HttpStatus.BAD_REQUEST,
+            TransferErrorCodesEnum.TRANSFER_PAYER_INSUFFICIENT_BALANCE.toString(), HttpStatus.BAD_REQUEST,
+            TransferErrorCodesEnum.TRANSFER_UNAUTHORIZED.toString(), HttpStatus.BAD_REQUEST,
+            TransferErrorCodesEnum.TRANSFER_DEPOSIT_NEGATIVE_VALUE_FOR_PAYEE.toString(), HttpStatus.BAD_REQUEST,
+            TransferErrorCodesEnum.TRANSFER_AUTHORIZATION.toString(), HttpStatus.INTERNAL_SERVER_ERROR,
+            TransferErrorCodesEnum.TRANSFER_AUTHORIZATION_ERROR.toString(), HttpStatus.INTERNAL_SERVER_ERROR
     );
     // todo
     // [ ] publish transf event
