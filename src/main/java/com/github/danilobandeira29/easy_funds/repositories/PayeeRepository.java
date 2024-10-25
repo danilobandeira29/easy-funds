@@ -24,12 +24,10 @@ public class PayeeRepository {
             var merchantEntityOptional = merchantRepository.findById(id);
             var userEntityOptional = usersRepository.findById(id);
             if (userEntityOptional.isEmpty() && merchantEntityOptional.isEmpty()) {
-                System.out.println("payeerepository: user and merchant not found");
                 return Optional.empty();
             }
             var accountEntityOptional = accountUsersRepository.findByOwnerId(id);
             if (accountEntityOptional.isEmpty()) {
-                System.out.println("payeerepository: account not found");
                 return Optional.empty();
             }
             if (merchantEntityOptional.isPresent() && userEntityOptional.isEmpty()) {
@@ -55,7 +53,7 @@ public class PayeeRepository {
             }
             return Optional.empty();
         } catch (Exception e) {
-            System.out.println("error when trying to find payee " + e);
+            System.out.println("payeerepository: error when trying to find payee " + e);
             return Optional.empty();
         }
     }

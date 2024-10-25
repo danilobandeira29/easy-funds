@@ -4,7 +4,7 @@ import lombok.Getter;
 
 @Getter
 public class ApiResponseDto<T> {
-    public enum STATUS {
+    private enum STATUS {
         success,
         fail
     }
@@ -30,5 +30,13 @@ public class ApiResponseDto<T> {
 
     public static <T> ApiResponseDto<T> fail(String e, String c) {
         return new ApiResponseDto<T>(STATUS.fail, e, c);
+    }
+
+    public boolean codeEquals(String v) {
+        return this.getCode().equals(v);
+    }
+
+    public boolean isSuccess() {
+        return this.status == STATUS.success;
     }
 }
