@@ -57,6 +57,6 @@ and insert Username: `root` and Password: `root`.
 
 ## TODO
 
-- Integration tests
-- Observability such as Sentry and Elastic
-- Authentication
+- [ ] Integration tests
+- [ ] Observability such as Sentry and Elastic
+- [ ] Authentication
