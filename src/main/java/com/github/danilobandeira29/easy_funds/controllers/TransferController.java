@@ -30,7 +30,8 @@ public class TransferController {
             TransferErrorCodesEnum.TRANSFER_UNAUTHORIZED.toString(), HttpStatus.BAD_REQUEST,
             TransferErrorCodesEnum.TRANSFER_DEPOSIT_NEGATIVE_VALUE_FOR_PAYEE.toString(), HttpStatus.BAD_REQUEST,
             TransferErrorCodesEnum.TRANSFER_AUTHORIZATION.toString(), HttpStatus.INTERNAL_SERVER_ERROR,
-            TransferErrorCodesEnum.TRANSFER_AUTHORIZATION_ERROR.toString(), HttpStatus.INTERNAL_SERVER_ERROR
+            TransferErrorCodesEnum.TRANSFER_AUTHORIZATION_ERROR.toString(), HttpStatus.INTERNAL_SERVER_ERROR,
+            TransferErrorCodesEnum.TRANSFER_EVENT.toString(), HttpStatus.INTERNAL_SERVER_ERROR
     );
     // todo
     // [ ] publish transf event
