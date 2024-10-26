@@ -1,0 +1,10 @@
+POST http://localhost:8080/transfer
+Content-Type: application/json
+
+{
+  "value": 10,
+  "payer": "1c0a69ff-bf1d-474d-a4ed-a9247e16ba0d",
+  "payee": "cfcb249c-62c5-41a2-9078-cb210f8c70a2"
+}
+
+####
