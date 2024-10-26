@@ -6,7 +6,13 @@ Application to handle transfers money between user and user/merchant and publish
 
 All files are located at `@docs` folder.
 
-![easy-funds-context](@docs/container-diagram.png)
+Context
+
+![easy-funds-context-diagram](@docs/easy-funds-context-diagram.png)
+
+Container
+
+![easy-funds-container-diagram](@docs/easy-funds-container-diagram.png)
 
 ### Swagger
 

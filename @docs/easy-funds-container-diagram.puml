@@ -1,0 +1,33 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!include DEVICONS/react.puml
+!include DEVICONS/java.puml
+!include DEVICONS/sqllite.puml
+
+LAYOUT_WITH_LEGEND()
+AddRelTag("async", $textColor="orange", $lineColor="orange", $lineStyle = DashedLine())
+
+title "Easy Funds - Container View"
+
+Person(user, "User", "Person who wants to create transfer money to another user or merchant")
+
+System_Boundary(easy_funds_context, "Easy Funds System", "Software System") {
+    Container(easy_funds_mobile, "Easy Funds Mobile App", "Typescript and React Native", "Provides transfer functionality to users via their mobile device", "react")
+    Container(easy_funds_api, "Easy Funds API", "Java and Spring Boot", "Handles transfer requests and business logic", "java")
+    ContainerDb(database, "SQL Database", "SQLite", "Stores user accounts and transaction records", "sqllite")
+}
+Container_Ext(rabbitmq, "RabbitMQ", "Message Broker", "Handles asynchronous communication between services")
+Container_Ext(notifier_service, "Notification Service", "Spring Boot", "Sends notifications via Email and SMS")
+Container_Ext(authorizer_service, "Authorizer Service", "API REST", "Authorizes if a transfer can be done")
+
+Rel(user, easy_funds_mobile, "Transfer money")
+Rel(easy_funds_mobile, easy_funds_api, "Makes api calls", "JSON/HTTPS")
+Rel(easy_funds_api, authorizer_service, "Authorize transaction", "JSON/HTTPS")
+Rel(easy_funds_api, rabbitmq, "Send Transfer Event to", "Async Direct/RabbitMQ", $tags="async")
+Rel(notifier_service, rabbitmq, "Consumes Transfer Event from", "Direct/RabbitMQ")
+Rel(notifier_service, user, "Send notification to")
+Rel(easy_funds_api, database, "Reads from and writes to", "SQL/TCP")
+
+@enduml
